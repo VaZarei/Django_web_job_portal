@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Your Job Application</h2>
+{% if job_application %}
+    <p>LinkedIn Email: {{ job_application.linkedin_email }}</p>
+    <p>Remote Jobs Preference: {{ job_application.remote_jobs }}</p>
+    <a href="{% url 'job_application:edit_form' %}">Edit Your Form</a>
+{% else %}
+    <p>No job application found.</p>
+    <a href="{% url 'job_application:job_form' %}">Create Application</a>
+{% endif %}
+{% endblock %}
