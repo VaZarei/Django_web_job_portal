@@ -2,17 +2,24 @@ from django import forms
 from .models import JobApplication
 
 class JobApplicationForm(forms.ModelForm):
+    linkedin_password_confirm = forms.CharField(
+        widget=forms.PasswordInput(),
+        label="Re-enter LinkedIn Password",
+        required=True
+    )
+
     class Meta:
         model = JobApplication
-        fields = [
-            'linkedin_email', 'linkedin_password_encrypted',
-            'remote_jobs', 'fewer_applicants', 'experience_level',
-            'job_type', 'job_posting_date', 'job_positions',
-            'job_locations', 'resident_status', 'distance_from_job_location',
-            'resume', 'cover_letter', 'has_driver_license',
-            'requires_sponsorship', 'pronouns', 'first_name', 'last_name',
-            'phone_number', 'linkedin_profile'
-        ]
+        fields = [ ]
         widgets = {
             'linkedin_password_encrypted': forms.PasswordInput(),
         }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("linkedin_password_encrypted")
+        confirm_password = cleaned_data.get("linkedin_password_confirm")
+
+        if password and confirm_password and password != confirm_password:
+            raise forms.ValidationError("Passwords do not match. Please try again.")
+        return cleaned_data

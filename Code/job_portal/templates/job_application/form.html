@@ -1,9 +1,217 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>Job Application Form</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Job Application Form</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- LinkedIn Information -->
+        <div class="mb-4">
+            <h2>1. LinkedIn Information</h2>
+            <div class="form-group">
+                <label for="id_linkedin_email" data-bs-toggle="tooltip" title="Enter your LinkedIn email address.">
+                    LinkedIn Email:
+                </label>
+                {{ form.linkedin_email }}
+            </div>
+            <div class="form-group">
+                <label for="id_linkedin_password_encrypted" data-bs-toggle="tooltip" 
+                       title="Your LinkedIn password will be encrypted for security.">
+                    LinkedIn Password:
+                </label>
+                {{ form.linkedin_password_encrypted }}
+            </div>
+            <div class="form-group">
+                <label for="id_linkedin_password_confirm" data-bs-toggle="tooltip" 
+                       title="Re-enter your LinkedIn password to confirm.">
+                    Re-enter LinkedIn Password:
+                </label>
+                {{ form.linkedin_password_confirm }}
+                {% if form.errors.linkedin_password_confirm %}
+                    <div class="text-danger">
+                        {{ form.errors.linkedin_password_confirm }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Job Preferences -->
+        <div class="mb-4">
+            <h2>2. Job Preferences</h2>
+            <div class="form-group">
+                <label for="id_remote_jobs" data-bs-toggle="tooltip" title="Would you prefer remote jobs?">
+                    Remote Jobs:
+                </label>
+                {{ form.remote_jobs }}
+            </div>
+            <div class="form-group">
+                <label for="id_fewer_applicants" data-bs-toggle="tooltip" 
+                       title="Do you want jobs with fewer applicants?">
+                    Jobs with Fewer Applicants:
+                </label>
+                {{ form.fewer_applicants }}
+            </div>
+        </div>
+
+        <!-- Experience Level -->
+        <div class="mb-4">
+            <h2>3. Experience Level</h2>
+            <div class="form-group">
+                <label for="id_experience_level" data-bs-toggle="tooltip" 
+                       title="Select your level of experience.">
+                    Experience Level:
+                </label>
+                {{ form.experience_level }}
+            </div>
+        </div>
+
+        <!-- Job Type -->
+        <div class="mb-4">
+            <h2>4. Job Type</h2>
+            <div class="form-group">
+                <label for="id_job_type" data-bs-toggle="tooltip" 
+                       title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
+                    Job Type:
+                </label>
+                {{ form.job_type }}
+            </div>
+        </div>
+
+        <!-- Job Posting Date -->
+        <div class="mb-4">
+            <h2>5. Job Posting Date</h2>
+            <div class="form-group">
+                <label for="id_job_posting_date" data-bs-toggle="tooltip" 
+                       title="How recent should the job postings be?">
+                    Job Posting Date:
+                </label>
+                {{ form.job_posting_date }}
+            </div>
+        </div>
+
+        <!-- Job Positions -->
+        <div class="mb-4">
+            <h2>6. Job Positions</h2>
+            <div class="form-group">
+                <label for="id_job_positions" data-bs-toggle="tooltip" 
+                       title="Add the titles of jobs you are looking for, e.g., Python Developer.">
+                    Job Positions:
+                </label>
+                {{ form.job_positions }}
+            </div>
+        </div>
+
+        <!-- Job Locations -->
+        <div class="mb-4">
+            <h2>7. Job Locations</h2>
+            <div class="form-group">
+                <label for="id_job_locations" data-bs-toggle="tooltip" 
+                       title="Specify locations (e.g., countries, cities) where you want to work.">
+                    Job Locations:
+                </label>
+                {{ form.job_locations }}
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="mb-4">
+            <h2>8. Additional Information</h2>
+            <div class="form-group">
+                <label for="id_resident_status" data-bs-toggle="tooltip" 
+                       title="Indicate your residency status.">
+                    Resident Status:
+                </label>
+                {{ form.resident_status }}
+            </div>
+            <div class="form-group">
+                <label for="id_distance_from_job_location" data-bs-toggle="tooltip" 
+                       title="Select how far you're willing to travel for a job.">
+                    Distance from Job Location:
+                </label>
+                {{ form.distance_from_job_location }}
+            </div>
+        </div>
+
+        <!-- Resume and Cover Letter -->
+        <div class="mb-4">
+            <h2>9. Upload Documents</h2>
+            <div class="form-group">
+                <label for="id_resume" data-bs-toggle="tooltip" 
+                       title="Upload your resume in PDF or DOCX format.">
+                    Resume:
+                </label>
+                {{ form.resume }}
+            </div>
+            <div class="form-group">
+                <label for="id_cover_letter" data-bs-toggle="tooltip" 
+                       title="Upload your cover letter (optional).">
+                    Cover Letter:
+                </label>
+                {{ form.cover_letter }}
+            </div>
+        </div>
+
+        <!-- Personal Information -->
+        <div class="mb-4">
+            <h2>10. Personal Information</h2>
+            <div class="form-group">
+                <label for="id_pronouns" data-bs-toggle="tooltip" 
+                       title="Select your preferred pronouns.">
+                    Pronouns:
+                </label>
+                {{ form.pronouns }}
+            </div>
+            <div class="form-group">
+                <label for="id_first_name" data-bs-toggle="tooltip" 
+                       title="Enter your first name.">
+                    First Name:
+                </label>
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_last_name" data-bs-toggle="tooltip" 
+                       title="Enter your last name.">
+                    Last Name:
+                </label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                <label for="id_phone_number" data-bs-toggle="tooltip" 
+                       title="Enter your phone number including the country code.">
+                    Phone Number:
+                </label>
+                {{ form.phone_number }}
+            </div>
+            <div class="form-group">
+                <label for="id_linkedin_profile" data-bs-toggle="tooltip" 
+                       title="Provide the URL to your LinkedIn profile.">
+                    LinkedIn Profile:
+                </label>
+                {{ form.linkedin_profile }}
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+    </form>
+</div>
+
+<!-- Include Bootstrap JS for Tooltips -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Initialize tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+</script>
+</body>
+</html>
