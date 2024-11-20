@@ -24,7 +24,7 @@ class JobApplication(models.Model):
     
     
     # 2.Job Preferences
-    remote_jobs = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')])
+    remote_jobs = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
     fewer_applicants = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default='No')
     
     # 3.Experience Level 
@@ -114,7 +114,7 @@ class JobApplication(models.Model):
     first_Name = models.TextField(max_length=20, null=False, blank=False, default='John')
     last_Name = models.TextField(max_length=20, null=False, blank=False, default='Doe')
     last_Name = models.TextField(max_length=20, null=False, blank=False, default='Doe')
-    phone_number = models.TextField(max_length=30, null=False, blank=False, default='+447012345678')
+    phone_number = models.TextField(max_length=15, null=False, blank=False, default='+447012345678')
     street_address = models.TextField(max_length=40, null=False, blank=False, default='wimbley street')
     city = models.TextField(max_length=40, null=False, blank=False, default='London')
     state = models.TextField(max_length=40, null=False, blank=False, default='London')

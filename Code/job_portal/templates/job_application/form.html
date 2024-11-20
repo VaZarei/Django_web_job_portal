@@ -13,7 +13,7 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-        <!-- LinkedIn Information -->
+        <!-- 1.LinkedIn Credentials -->
         <div class="mb-4">
             <h2>1. LinkedIn Information</h2>
             <div class="form-group">
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <!-- Job Preferences -->
+        <!-- 2.Job Preferences -->
         <div class="mb-4">
             <h2>2. Job Preferences</h2>
             <div class="form-group">
@@ -61,31 +61,96 @@
             </div>
         </div>
 
-        <!-- Experience Level -->
+        <!-- 3.Experience Level -->
         <div class="mb-4">
             <h2>3. Experience Level</h2>
             <div class="form-group">
-                <label for="id_experience_level" data-bs-toggle="tooltip" 
-                       title="Select your level of experience.">
-                    Experience Level:
+                <label for="id_experience_internship" data-bs-toggle="tooltip" 
+                       title="Select your Experience Internship.">
+                    Experience Internship:
                 </label>
-                {{ form.experience_level }}
+                {{ form.experience_internship }}
             </div>
+            <div class="form-group">
+                <label for="id_experience_entry" data-bs-toggle="tooltip" 
+                       title="Select your Experience Entry.">
+                    Experience Entry:
+                </label>
+                {{ form.experience_entry }}
+            </div>
+            <div class="form-group">
+                <label for="id_experience_associate" data-bs-toggle="tooltip" 
+                       title="Select your Experience Associate.">
+                    Experience Associate:
+                </label>
+                {{ form.experience_associate }}
+            </div>
+            <div class="form-group">
+                <label for="id_experience_director" data-bs-toggle="tooltip" 
+                       title="Select your experience_director.">
+                       experience_director:
+                </label>
+                {{ form.experience_director }}
+            </div>
+            <div class="form-group">
+                <label for="id_experience_executive" data-bs-toggle="tooltip" 
+                       title="Select your experience_executive.">
+                    experience_executive:
+                </label>
+                {{ form.experience_executive }}
+            </div>
+
+
         </div>
 
-        <!-- Job Type -->
+        <!-- 4.Job Type -->
         <div class="mb-4">
             <h2>4. Job Type</h2>
             <div class="form-group">
-                <label for="id_job_type" data-bs-toggle="tooltip" 
+                <label for="id_jobtype_fulltime" data-bs-toggle="tooltip" 
                        title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
-                    Job Type:
+                    jobtype_fulltime:
                 </label>
-                {{ form.job_type }}
+                {{ form.jobtype_fulltime }}
+            </div>
+            <div class="form-group">
+                <label for="id_jobtype_contract" data-bs-toggle="tooltip" 
+                       title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
+                       jobtype_contract:
+                </label>
+                {{ form.jobtype_contract }}
+            </div>
+            <div class="form-group">
+                <label for="id_jobtype_parttime" data-bs-toggle="tooltip" 
+                       title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
+                       jobtype_parttime:
+                </label>
+                {{ form.jobtype_parttime }}
+            </div>
+            <div class="form-group">
+                <label for="id_jobtype_temprory" data-bs-toggle="tooltip" 
+                       title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
+                       jobtype_temprory:
+                </label>
+                {{ form.jobtype_temprory }}
+            </div>
+            <div class="form-group">
+                <label for="id_jobtype_internship" data-bs-toggle="tooltip" 
+                       title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
+                       jobtype_internship:
+                </label>
+                {{ form.jobtype_internship }}
+            </div>
+            <div class="form-group">
+                <label for="id_jobtype_volunteer" data-bs-toggle="tooltip" 
+                       title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
+                       jobtype_volunteer:
+                </label>
+                {{ form.jobtype_volunteer }}
             </div>
         </div>
 
-        <!-- Job Posting Date -->
+        <!-- 5.Job application Posting Date -->
         <div class="mb-4">
             <h2>5. Job Posting Date</h2>
             <div class="form-group">
@@ -97,7 +162,7 @@
             </div>
         </div>
 
-        <!-- Job Positions -->
+        <!-- 6.Job Positions -->
         <div class="mb-4">
             <h2>6. Job Positions</h2>
             <div class="form-group">
@@ -109,7 +174,7 @@
             </div>
         </div>
 
-        <!-- Job Locations -->
+        <!-- 7.Job Locations -->
         <div class="mb-4">
             <h2>7. Job Locations</h2>
             <div class="form-group">
@@ -121,7 +186,7 @@
             </div>
         </div>
 
-        <!-- Additional Information -->
+        <!-- 8.Additional Information -->
         <div class="mb-4">
             <h2>8. Additional Information</h2>
             <div class="form-group">
