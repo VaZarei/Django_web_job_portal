@@ -49,24 +49,24 @@ class JobApplication(models.Model):
     Posting_Date = models.CharField(max_length=15, choices=[('All_Time', 'All_Time'), ('month', 'month'), ('week', 'week'), ('24_hours', '24_hours')], default="All_Time")
 
     # 6.Job Positions
-    job_position_1 = models.TextField(max_length=30, null=False, blank= False, default="python developer")
-    job_position_2 = models.TextField(max_length=30, null=False, blank= False, default="digital marketer")
-    job_position_3 = models.TextField(max_length=30, null=True, blank= True)
-    job_position_4 = models.TextField(max_length=30, null=True, blank= True)
-    job_position_5 = models.TextField(max_length=30, null=True, blank= True)
-    job_position_6 = models.TextField(max_length=30, null=True, blank= True)
+    job_position_1 = models.CharField(max_length=30, null=False, blank= False, default="python developer")
+    job_position_2 = models.CharField(max_length=30, null=False, blank= False, default="digital marketer")
+    job_position_3 = models.CharField(max_length=30, null=True, blank= True)
+    job_position_4 = models.CharField(max_length=30, null=True, blank= True)
+    job_position_5 = models.CharField(max_length=30, null=True, blank= True)
+    job_position_6 = models.CharField(max_length=30, null=True, blank= True)
 
     # 7.Job Locations
-    job_location_1 = models.TextField(max_length=30, null=False, blank=False, default= "England")
-    job_location_2 = models.TextField(max_length=30, null=True, blank=True)
-    job_location_3 = models.TextField(max_length=30, null=True, blank=True)
-    job_location_4 = models.TextField(max_length=30, null=True, blank=True)
-    job_location_5 = models.TextField(max_length=30, null=True, blank=True)
-    job_location_6 = models.TextField(max_length=30, null=True, blank=True)
+    job_location_1 = models.CharField(max_length=30, null=False, blank=False, default= "England")
+    job_location_2 = models.CharField(max_length=30, null=True, blank=True)
+    job_location_3 = models.CharField(max_length=30, null=True, blank=True)
+    job_location_4 = models.CharField(max_length=30, null=True, blank=True)
+    job_location_5 = models.CharField(max_length=30, null=True, blank=True)
+    job_location_6 = models.CharField(max_length=30, null=True, blank=True)
 
     # 8.Additional Information
     resident_status = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
-    distance_from_job_location = models.CharField(max_length=10, choices=[('0','0'),('5','5'),('10','10'),('25','25'),('50','50'),('100','100'),])
+    distance_from_job_location = models.CharField(max_length=10, choices=[('0','0'),('5','5'),('10','10'),('25','25'),('50','50'),('100','100'),], default='25')
 
     # 9.provide the following additional information
     
@@ -89,47 +89,47 @@ class JobApplication(models.Model):
 
 
     # 11.provide the following information
-    University_gpa = models.TextField(max_length=30, null=True, blank=True, default='A')
-    Minimum_Salary_Expectation = models.TextField(max_length=20, null=False, blank=False, default='32000')
+    University_gpa = models.CharField(max_length=30, null=True, blank=True, default='A')
+    Minimum_Salary_Expectation = models.CharField(max_length=20, null=False, blank=False, default='32000')
 
-    language_1 = models.TextField(max_length=20, null=False, blank=False, default='English')
-    language_2 = models.TextField(max_length=20, null=True, blank=True )
-    language_3 = models.TextField(max_length=20, null=True, blank=True )
+    language_1 = models.CharField(max_length=20, null=False, blank=False, default='English')
+    language_2 = models.CharField(max_length=20, null=True, blank=True )
+    language_3 = models.CharField(max_length=20, null=True, blank=True )
 
-    Notice_Period = models.TextField(max_length=5, null=False, blank=False, default='3') # per Week
-    Years_of_Experience_1 = models.TextField(max_length=35, null=False, blank=False, default='Software Developer : 3')
-    Years_of_Experience_2 = models.TextField(max_length=35, null=True, blank=True, default='python : 2')
-    Years_of_Experience_3 = models.TextField(max_length=35, null=True, blank=True, default='sql : 8')
-    Years_of_Experience_4 = models.TextField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_4 = models.TextField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_4 = models.TextField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_4 = models.TextField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_4 = models.TextField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_4 = models.TextField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_4 = models.TextField(max_length=35, null=True, blank=True, default='aws : 3')
+    Notice_Period = models.CharField(max_length=5, null=False, blank=False, default='3') # per Week
+    Years_of_Experience_1 = models.CharField(max_length=35, null=False, blank=False, default='Software Developer : 3')
+    Years_of_Experience_2 = models.CharField(max_length=35, null=True, blank=True, default='python : 2')
+    Years_of_Experience_3 = models.CharField(max_length=35, null=True, blank=True, default='sql : 8')
+    Years_of_Experience_4 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    Years_of_Experience_5 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    Years_of_Experience_6 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    Years_of_Experience_7 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    Years_of_Experience_8 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    Years_of_Experience_9 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    Years_of_Experience_10 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
 
 
     # 12.Personal Information
     pronouns = models.CharField(max_length=10, choices=[('Mr.','Mr.'), ('Ms.','Ms.'), ('Mx.','Mx.'), ('etc.','etc.')])
-    first_Name = models.TextField(max_length=20, null=False, blank=False, default='John')
-    last_Name = models.TextField(max_length=20, null=False, blank=False, default='Doe')
-    last_Name = models.TextField(max_length=20, null=False, blank=False, default='Doe')
-    phone_number = models.TextField(max_length=15, null=False, blank=False, default='+447012345678')
-    street_address = models.TextField(max_length=40, null=False, blank=False, default='wimbley street')
-    city = models.TextField(max_length=40, null=False, blank=False, default='London')
-    state = models.TextField(max_length=40, null=False, blank=False, default='London')
-    zip_code = models.TextField(max_length=20, null=False, blank=False, default='0WB ACE')
-    Linkedin_Profile = models.TextField(max_length=80, null=False, blank=False, default='https://www.linkedin.com/in/john-doe/')
-    website = models.TextField(max_length=50, null=True, blank=True, default='https://www.johndoe.com/')
-    message_to_hire = models.CharField(max_length=100, null=True, blank=True, default='Doe')
+    first_Name = models.CharField(max_length=20, null=False, blank=False, default='John')
+    last_Name = models.CharField(max_length=20, null=False, blank=False, default='Doe')
+    phone_country_code = models.CharField(max_length=15, null=False, blank=False, default='+44')
+    phone_number = models.CharField(max_length=15, null=False, blank=False, default='+447012345678')
+    street_address = models.CharField(max_length=40, null=False, blank=False, default='wimbley street')
+    city = models.CharField(max_length=40, null=False, blank=False, default='London')
+    state = models.CharField(max_length=40, null=False, blank=False, default='London')
+    zip_code = models.CharField(max_length=20, null=False, blank=False, default='0WB ACE')
+    Linkedin_Profile = models.CharField(max_length=80, null=False, blank=False, default='https://www.linkedin.com/in/john-doe/')
+    website = models.CharField(max_length=50, null=True, blank=True, default='https://www.johndoe.com/')
+    message_to_hire = models.CharField(max_length=100, null=True, blank=True, default="Hi, I am interested to join your organization. Please have a look at my resume. Thank you.")
 
-    13. # provide the following information (for US-based jobs)
-    pronouns = models.CharField(max_length=30, choices=[('Male','Male'), ('Female','Female'), ('Non-binary.','Non-binary'), ('Other','Other')])
-    race = models.TextField(max_length=20, null=False, blank=False, default='none')
+    #13. provide the following information (for US-based jobs)
+    pronouns_us = models.CharField(max_length=30, choices=[('Male','Male'), ('Female','Female'), ('Non-binary.','Non-binary'), ('Other','Other')], null=True, default=None)
+    race = models.CharField(max_length=20, null=False, blank=False, default='none')
     veteran_status = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
     disability_status = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="no")
     citizenship = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    security_clearance = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
+    security_clearance_us = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
 
 
 
