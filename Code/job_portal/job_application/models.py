@@ -16,6 +16,9 @@ def decrypt(text):
     return cipher.decrypt(text.encode()).decode()
 
 class JobApplication(models.Model):
+
+    def __str__(self):
+        return self.first_Name + ' '  + self.last_Name
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     
     # 1.LinkedIn Credentials
@@ -120,7 +123,7 @@ class JobApplication(models.Model):
     state = models.CharField(max_length=40, null=False, blank=False, default='London')
     zip_code = models.CharField(max_length=20, null=False, blank=False, default='0WB ACE')
     Linkedin_Profile = models.CharField(max_length=80, null=False, blank=False, default='https://www.linkedin.com/in/john-doe/')
-    website = models.CharField(max_length=50, null=True, blank=True, default='https://www.johndoe.com/')
+    website = models.URLField(max_length=50, null=True, blank=True, default='https://www.johndoe.com/')
     message_to_hire = models.CharField(max_length=100, null=True, blank=True, default="Hi, I am interested to join your organization. Please have a look at my resume. Thank you.")
 
     #13. provide the following information (for US-based jobs)

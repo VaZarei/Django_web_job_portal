@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('home.urls')),
     path('job/', include('job_application.urls')),  # Include the Job Application app URLs
     path('accounts/', include('django.contrib.auth.urls')),  # For login and logout
 ]
