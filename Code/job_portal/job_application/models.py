@@ -22,36 +22,39 @@ class JobApplication(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     
     # 1.LinkedIn Credentials
-    linkedin_email = models.EmailField()
-    linkedin_password_encrypted = models.TextField()
+    linkedinEmail = models.EmailField()
+    linkedinPassword = models.TextField()
+
+    disableAntiLock = False
     
     
     # 2.Job Preferences
-    remote_jobs = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    fewer_applicants = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default='No')
+    remote = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    lessthanTenApplicants = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default='No')
     
     # 3.Experience Level 
-    experience_internship = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experience_entry = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experience_associate = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experience_mid_Senior = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experience_director = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experience_executive = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    experienceLevel_internship = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    experienceLevel_entry = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    experienceLevel_associate = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    experienceLevel_midsenior = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    experienceLevel_director = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    experienceLevel_executive = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
 
     
     # 4.Job Type
-    jobtype_fulltime = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobtype_contract = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobtype_parttime = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobtype_temprory = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobtype_internship = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobtype_volunteer = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_fulltime = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_contract = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_parttime = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_temporary = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_internship = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_other = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_volunteer = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
 
 
     # 5.Job application Posting Date 
-    Posting_Date = models.CharField(max_length=15, choices=[('All_Time', 'All_Time'), ('month', 'month'), ('week', 'week'), ('24_hours', '24_hours')], default="All_Time")
+    date = models.CharField(max_length=15, choices=[('All_Time', 'All_Time'), ('month', 'month'), ('week', 'week'), ('24_hours', '24_hours')], default="All_Time")
 
-    # 6.Job Positions
+    # 6.Job Positions is a list, need to write seprate code
     job_position_1 = models.CharField(max_length=30, null=False, blank= False, default="python developer")
     job_position_2 = models.CharField(max_length=30, null=False, blank= False, default="digital marketer")
     job_position_3 = models.CharField(max_length=30, null=True, blank= True)
@@ -59,7 +62,7 @@ class JobApplication(models.Model):
     job_position_5 = models.CharField(max_length=30, null=True, blank= True)
     job_position_6 = models.CharField(max_length=30, null=True, blank= True)
 
-    # 7.Job Locations
+    # 7.Job Locations is a list, need to write seprate code
     job_location_1 = models.CharField(max_length=30, null=False, blank=False, default= "England")
     job_location_2 = models.CharField(max_length=30, null=True, blank=True)
     job_location_3 = models.CharField(max_length=30, null=True, blank=True)
@@ -68,71 +71,77 @@ class JobApplication(models.Model):
     job_location_6 = models.CharField(max_length=30, null=True, blank=True)
 
     # 8.Additional Information
-    resident_status = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
-    distance_from_job_location = models.CharField(max_length=10, choices=[('0','0'),('5','5'),('10','10'),('25','25'),('50','50'),('100','100'),], default='25')
+    residentStatus = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
+    distance = models.CharField(max_length=10, choices=[('0','0'),('5','5'),('10','10'),('25','25'),('50','50'),('100','100'),], default='25')
+    # outputFileDirectory need to define
+    # companyBlacklist
+    # titleBlacklist
+    # posterBlacklist
 
     # 9.provide the following additional information
     
-    resume = models.FileField(upload_to='resumes/', null=True, blank=True)
-    cover_letter = models.FileField(upload_to='cover_letters/', null=True, blank=True)
+    uploads_resume = models.FileField(upload_to='resumes/', null=True, blank=True)
+    uploads_coverLetter = models.FileField(upload_to='cover_letters/', null=True, blank=True)
     
     # 10.answer the following questions
-    has_driver_license = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
-    requires_sponsorship = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
-    authorized_to_work = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    necessary_licenses = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    start_immediately = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    comfortable_with_commuting = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    comfortable_with_remote_work = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    drug_test = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    complete_an_assessment = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    security_clearance = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
-    completed_Degree  = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    background_check = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_driversLicence = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
+    checkboxes_requireVisa = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
+    checkboxes_legallyAuthorized = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_certifiedProfessional = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_urgentFill = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_commute = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_remote = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_drugTest = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_assessment = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_securityClearance = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
+    
+    # checkboxes_completed_Degree is a list
+    checkboxes_completed_Degree  = models.CharField(max_length=40, choices=[('High School Diploma','High School Diploma'), ("Bachelor's Degree","Bachelor's Degree"), ("Master's Degree","Master's Degree"), ("Phd's Degree","Phd's Degree")], default="Bachelor's Degree") # IS a list, need to define
+    checkboxes_backgroundCheck = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
 
 
     # 11.provide the following information
-    University_gpa = models.CharField(max_length=30, null=True, blank=True, default='A')
-    Minimum_Salary_Expectation = models.CharField(max_length=20, null=False, blank=False, default='32000')
+    universityGpa = models.CharField(max_length=30, null=True, blank=True, default='A')
+    salaryMinimum = models.CharField(max_length=20, null=False, blank=False, default='32000')
 
     language_1 = models.CharField(max_length=20, null=False, blank=False, default='English')
     language_2 = models.CharField(max_length=20, null=True, blank=True )
     language_3 = models.CharField(max_length=20, null=True, blank=True )
 
-    Notice_Period = models.CharField(max_length=5, null=False, blank=False, default='3') # per Week
-    Years_of_Experience_1 = models.CharField(max_length=35, null=False, blank=False, default='Software Developer : 3')
-    Years_of_Experience_2 = models.CharField(max_length=35, null=True, blank=True, default='python : 2')
-    Years_of_Experience_3 = models.CharField(max_length=35, null=True, blank=True, default='sql : 8')
-    Years_of_Experience_4 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_5 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_6 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_7 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_8 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_9 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
-    Years_of_Experience_10 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    noticePeriod = models.CharField(max_length=5, null=False, blank=False, default='3') # per Week
+    experience_Experience1 = models.CharField(max_length=35, null=False, blank=False, default='Software Developer : 3')
+    experience_Experience2 = models.CharField(max_length=35, null=True, blank=True, default='python : 2')
+    experience_Experience3 = models.CharField(max_length=35, null=True, blank=True, default='sql : 8')
+    experience_Experience4 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    experience_Experience5 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    experience_Experience6 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    experience_Experience7 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    experience_Experience8 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    experience_Experience9 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    experience_Experience10 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
 
 
     # 12.Personal Information
-    pronouns = models.CharField(max_length=10, choices=[('Mr.','Mr.'), ('Ms.','Ms.'), ('Mx.','Mx.'), ('etc.','etc.')])
-    first_Name = models.CharField(max_length=20, null=False, blank=False, default='John')
-    last_Name = models.CharField(max_length=20, null=False, blank=False, default='Doe')
-    phone_country_code = models.CharField(max_length=15, null=False, blank=False, default='+44')
-    phone_number = models.CharField(max_length=15, null=False, blank=False, default='+447012345678')
-    street_address = models.CharField(max_length=40, null=False, blank=False, default='wimbley street')
-    city = models.CharField(max_length=40, null=False, blank=False, default='London')
-    state = models.CharField(max_length=40, null=False, blank=False, default='London')
-    zip_code = models.CharField(max_length=20, null=False, blank=False, default='0WB ACE')
-    Linkedin_Profile = models.CharField(max_length=80, null=False, blank=False, default='https://www.linkedin.com/in/john-doe/')
-    website = models.URLField(max_length=50, null=True, blank=True, default='https://www.johndoe.com/')
-    message_to_hire = models.CharField(max_length=100, null=True, blank=True, default="Hi, I am interested to join your organization. Please have a look at my resume. Thank you.")
+    personalInfo_Pronouns = models.CharField(max_length=10, choices=[('Mr.','Mr.'), ('Ms.','Ms.'), ('Mx.','Mx.'), ('etc.','etc.')])
+    personalInfo_FirstName = models.CharField(max_length=20, null=False, blank=False, default='John')
+    personalInfo_lastName = models.CharField(max_length=20, null=False, blank=False, default='Doe')
+    personalInfo_PhoneCountryCode = models.CharField(max_length=15, null=False, blank=False, default='+44')
+    personalInfo_MobilePhoneNumber = models.CharField(max_length=15, null=False, blank=False, default='+447012345678')
+    personalInfo_Streetaddress = models.CharField(max_length=40, null=False, blank=False, default='wimbley street')
+    personalInfo_City = models.CharField(max_length=40, null=False, blank=False, default='London')
+    personalInfo_State = models.CharField(max_length=40, null=False, blank=False, default='London')
+    personalInfo_Zip = models.CharField(max_length=20, null=False, blank=False, default='0WB ACE')
+    personalInfo_Linkedin = models.CharField(max_length=80, null=False, blank=False, default='https://www.linkedin.com/in/john-doe/')
+    personalInfo_Website = models.URLField(max_length=50, null=True, blank=True, default='https://www.johndoe.com/')
+    personalInfo_MessageToManager = models.CharField(max_length=100, null=True, blank=True, default="Hi, I am interested to join your organization. Please have a look at my resume. Thank you.")
 
     #13. provide the following information (for US-based jobs)
-    pronouns_us = models.CharField(max_length=30, choices=[('Male','Male'), ('Female','Female'), ('Non-binary.','Non-binary'), ('Other','Other')], null=True, default=None)
-    race = models.CharField(max_length=20, null=False, blank=False, default='none')
-    veteran_status = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
-    disability_status = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="no")
-    citizenship = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    security_clearance_us = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
+    eeo_gender = models.CharField(max_length=30, choices=[('Male','Male'), ('Female','Female'), ('Non-binary.','Non-binary'), ('Other','Other')], null=True, default=None)
+    eeo_race = models.CharField(max_length=20, null=False, blank=False, default='none')
+    eeo_veteran = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
+    eeo_disability = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="no")
+    eeo_citizenship = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    eeo_clearance = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
 
 
 
@@ -147,8 +156,8 @@ class JobApplication(models.Model):
     
     def save(self, *args, **kwargs):
         if not self.pk:  # Encrypt LinkedIn password on first save
-            self.linkedin_password_encrypted = encrypt(self.linkedin_password_encrypted)
+            self.linkedinPassword = encrypt(self.linkedinPassword)
         super().save(*args, **kwargs)
     
     def get_linkedin_password(self):
-        return decrypt(self.linkedin_password_encrypted)
+        return decrypt(self.linkedinPassword)

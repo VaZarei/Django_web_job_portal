@@ -20,14 +20,14 @@
                 <label for="id_linkedin_email" data-bs-toggle="tooltip" title="Enter your LinkedIn email address.">
                     LinkedIn Email:
                 </label>
-                {{ form.linkedin_email }}
+                {{ form.linkedinEmail }}
             </div>
             <div class="form-group">
                 <label for="id_linkedin_password_encrypted" data-bs-toggle="tooltip" 
                        title="Your LinkedIn password will be encrypted for security.">
                     LinkedIn Password:
                 </label>
-                {{ form.linkedin_password_encrypted }}
+                {{ form.linkedin_password_confirm }}
             </div>
             <div class="form-group">
                 <label for="id_linkedin_password_confirm" data-bs-toggle="tooltip" 
@@ -47,17 +47,17 @@
         <div class="mb-4">
             <h2>2. Job Preferences</h2>
             <div class="form-group">
-                <label for="id_remote_jobs" data-bs-toggle="tooltip" title="Would you prefer remote jobs?">
+                <label for="id_remote" data-bs-toggle="tooltip" title="Would you prefer remote jobs?">
                     Remote Jobs:
                 </label>
-                {{ form.remote_jobs }}
+                {{ form.remote }}
             </div>
             <div class="form-group">
-                <label for="id_fewer_applicants" data-bs-toggle="tooltip" 
+                <label for="id_lessthanTenApplicants" data-bs-toggle="tooltip" 
                        title="Do you want jobs with fewer applicants?">
                     Jobs with Fewer Applicants:
                 </label>
-                {{ form.fewer_applicants }}
+                {{ form.lessthanTenApplicants }}
             </div>
         </div>
 
@@ -65,39 +65,46 @@
         <div class="mb-4">
             <h2>3. Experience Level</h2>
             <div class="form-group">
-                <label for="id_experience_internship" data-bs-toggle="tooltip" 
+                <label for="id_experienceLevel_internship" data-bs-toggle="tooltip" 
                        title="Select your Experience Internship.">
                     Experience Internship:
                 </label>
-                {{ form.experience_internship }}
+                {{ form.experienceLevel_internship }}
             </div>
             <div class="form-group">
-                <label for="id_experience_entry" data-bs-toggle="tooltip" 
+                <label for="id_experienceLevel_entry" data-bs-toggle="tooltip" 
                        title="Select your Experience Entry.">
                     Experience Entry:
                 </label>
-                {{ form.experience_entry }}
+                {{ form.experienceLevel_entry }}
             </div>
             <div class="form-group">
-                <label for="id_experience_associate" data-bs-toggle="tooltip" 
+                <label for="id_experienceLevel_associate" data-bs-toggle="tooltip" 
                        title="Select your Experience Associate.">
                     Experience Associate:
                 </label>
-                {{ form.experience_associate }}
+                {{ form.experienceLevel_associate }}
             </div>
             <div class="form-group">
-                <label for="id_experience_director" data-bs-toggle="tooltip" 
+                <label for="id_experienceLevel_midsenior" data-bs-toggle="tooltip" 
                        title="Select your experience_director.">
                        experience_director:
                 </label>
-                {{ form.experience_director }}
+                {{ form.experienceLevel_midsenior }}
             </div>
             <div class="form-group">
-                <label for="id_experience_executive" data-bs-toggle="tooltip" 
+                <label for="id_experienceLevel_director" data-bs-toggle="tooltip" 
+                       title="Select your experience_executive.">
+                    experienceLevel_director:
+                </label>
+                {{ form.experienceLevel_director }}
+            </div>
+            <div class="form-group">
+                <label for="id_experienceLevel_executive" data-bs-toggle="tooltip" 
                        title="Select your experience_executive.">
                     experience_executive:
                 </label>
-                {{ form.experience_executive }}
+                {{ form.experienceLevel_executive }}
             </div>
 
 
@@ -107,46 +114,46 @@
         <div class="mb-4">
             <h2>4. Job Type</h2>
             <div class="form-group">
-                <label for="id_jobtype_fulltime" data-bs-toggle="tooltip" 
+                <label for="id_jobTypes_fulltime" data-bs-toggle="tooltip" 
                        title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
-                    jobtype_fulltime:
+                    jobTypes_fulltime:
                 </label>
-                {{ form.jobtype_fulltime }}
+                {{ form.jobTypes_fulltime }}
             </div>
             <div class="form-group">
-                <label for="id_jobtype_contract" data-bs-toggle="tooltip" 
+                <label for="id_jobTypes_contract" data-bs-toggle="tooltip" 
                        title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
                        jobtype_contract:
                 </label>
-                {{ form.jobtype_contract }}
+                {{ form.jobTypes_contract }}
             </div>
             <div class="form-group">
-                <label for="id_jobtype_parttime" data-bs-toggle="tooltip" 
+                <label for="id_jobTypes_parttime" data-bs-toggle="tooltip" 
                        title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
                        jobtype_parttime:
                 </label>
-                {{ form.jobtype_parttime }}
+                {{ form.jobTypes_parttime }}
             </div>
             <div class="form-group">
-                <label for="id_jobtype_temprory" data-bs-toggle="tooltip" 
+                <label for="id_jobTypes_temporary" data-bs-toggle="tooltip" 
                        title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
                        jobtype_temprory:
                 </label>
-                {{ form.jobtype_temprory }}
+                {{ form.jobTypes_temporary }}
             </div>
             <div class="form-group">
                 <label for="id_jobtype_internship" data-bs-toggle="tooltip" 
                        title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
                        jobtype_internship:
                 </label>
-                {{ form.jobtype_internship }}
+                {{ form.jobTypes_internship }}
             </div>
             <div class="form-group">
-                <label for="id_jobtype_volunteer" data-bs-toggle="tooltip" 
+                <label for="id_jobTypes_volunteer" data-bs-toggle="tooltip" 
                        title="Choose the type of job you're looking for (e.g., Full-time, Contract).">
                        jobtype_volunteer:
                 </label>
-                {{ form.jobtype_volunteer }}
+                {{ form.jobTypes_volunteer }}
             </div>
         </div>
 
@@ -154,11 +161,11 @@
         <div class="mb-4">
             <h2>5. Job Posting Date</h2>
             <div class="form-group">
-                <label for="id_job_posting_date" data-bs-toggle="tooltip" 
+                <label for="id_date" data-bs-toggle="tooltip" 
                        title="How recent should the Posting_Date?">
                        Posting_Date:
                 </label>
-                {{ form.Posting_Date }}
+                {{ form.date }}
             </div>
         </div>
 
@@ -260,18 +267,18 @@
         <div class="mb-4">
             <h2>8. Additional Information</h2>
             <div class="form-group">
-                <label for="id_resident_status" data-bs-toggle="tooltip" 
+                <label for="id_residentStatus" data-bs-toggle="tooltip" 
                        title="Indicate your residency status.">
                        resident_status:
                 </label>
-                {{ form.resident_status }}
+                {{ form.residentStatus }}
             </div>
             <div class="form-group">
-                <label for="id_distance_from_job_location" data-bs-toggle="tooltip" 
+                <label for="id_distance" data-bs-toggle="tooltip" 
                        title="Select how far you're willing to travel for a job.">
                        distance_from_job_location:
                 </label>
-                {{ form.distance_from_job_location }}
+                {{ form.distance }}
             </div>
         </div>
 
@@ -279,18 +286,18 @@
         <div class="mb-4">
             <h2>9. Upload Documents</h2>
             <div class="form-group">
-                <label for="id_resume" data-bs-toggle="tooltip" 
+                <label for="id_uploads_resume" data-bs-toggle="tooltip" 
                        title="Upload your resume in PDF or DOCX format.">
                     Resume:
                 </label>
-                {{ form.resume }}
+                {{ form.uploads_resume }}
             </div>
             <div class="form-group">
-                <label for="id_cover_letter" data-bs-toggle="tooltip" 
+                <label for="id_uploads_coverLetter" data-bs-toggle="tooltip" 
                        title="Upload your cover letter (optional).">
                     Cover Letter:
                 </label>
-                {{ form.cover_letter }}
+                {{ form.uploads_coverLetter }}
             </div>
         </div>
 
@@ -298,81 +305,81 @@
         <div class="mb-4">
             <h2>10. Personal Information</h2>
             <div class="form-group">
-                <label for="id_has_driver_license" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_driversLicence" data-bs-toggle="tooltip" 
                        title="Select your has_driver_license.">
                        has_driver_license*:
                 </label>
-                {{ form.has_driver_license }}
+                {{ form.checkboxes_driversLicence }}
             </div>
             <div class="form-group">
-                <label for="id_requires_sponsorship" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_requireVisa" data-bs-toggle="tooltip" 
                        title="Enter your requires_sponsorship.">
                        requires_sponsorship:
                 </label>
-                {{ form.requires_sponsorship }}
+                {{ form.checkboxes_requireVisa }}
             </div>
             <div class="form-group">
-                <label for="id_authorized_to_work" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_legallyAuthorized" data-bs-toggle="tooltip" 
                        title="Enter your authorized_to_work.">
                        authorized_to_work:
                 </label>
-                {{ form.authorized_to_work }}
+                {{ form.checkboxes_legallyAuthorized }}
             </div>
             <div class="form-group">
-                <label for="id_necessary_licenses" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_certifiedProfessional" data-bs-toggle="tooltip" 
                        title="Enter your necessary_licenses">
                        necessary_licenses:
                 </label>
-                {{ form.necessary_licenses }}
+                {{ form.checkboxes_certifiedProfessional }}
             </div>
             <div class="form-group">
-                <label for="id_comfortable_with_commuting" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_commute" data-bs-toggle="tooltip" 
                        title="Provide the URL to your comfortable_with_commuting.">
                        comfortable_with_commuting:
                 </label>
-                {{ form.comfortable_with_commuting }}
+                {{ form.checkboxes_commute }}
             </div>
             <div class="form-group">
-                <label for="id_comfortable_with_commuting" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_remote" data-bs-toggle="tooltip" 
                        title="Provide the URL to your comfortable_with_remote_work.">
-                       comfortable_with_remote_work:
+                       checkboxes_remote:
                 </label>
-                {{ form.comfortable_with_remote_work }}
+                {{ form.checkboxes_remote }}
             </div>
             <div class="form-group">
-                <label for="id_drug_test" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_drugTest" data-bs-toggle="tooltip" 
                        title="Provide the URL to your drug_test.">
                        drug_test:
                 </label>
-                {{ form.drug_test }}
+                {{ form.checkboxes_drugTest }}
             </div>
             <div class="form-group">
-                <label for="id_comfortable_with_commuting" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_assessment" data-bs-toggle="tooltip" 
                        title="Provide the URL to your complete_an_assessment.">
-                       complete_an_assessment:
+                       checkboxes_assessment:
                 </label>
-                {{ form.complete_an_assessment }}
+                {{ form.checkboxes_assessment }}
             </div>
             <div class="form-group">
-                <label for="id_security_clearance" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_securityClearance" data-bs-toggle="tooltip" 
                        title="Provide the URL to your security_clearance.">
                        security_clearance:
                 </label>
-                {{ form.security_clearance }}
+                {{ form.checkboxes_securityClearance }}
             </div>
             <div class="form-group">
-                <label for="id_completed_Degree" data-bs-toggle="tooltip" 
+                <label for="id_checkboxes_completed_Degree" data-bs-toggle="tooltip" 
                        title="Provide the URL to your completed_Degree.">
                        start_completed_Degree:
                 </label>
-                {{ form.completed_Degree }}
+                {{ form.checkboxes_completed_Degree }}
             </div>
             <div class="form-group">
                 <label for="id_completed_Degree" data-bs-toggle="tooltip" 
                        title="Provide the URL to your background_check.">
-                       background_check:
+                       checkboxes_backgroundCheck:
                 </label>
-                {{ form.background_check }}
+                {{ form.checkboxes_backgroundCheck }}
             </div>
 
 
@@ -382,18 +389,18 @@
         <div class="mb-4">
             <h2>11.provide the following information</h2>
             <div class="form-group">
-                <label for="id_University_gpa" data-bs-toggle="tooltip" 
+                <label for="id_universityGpa" data-bs-toggle="tooltip" 
                        title="Indicate your University_gpa.">
                        University_gpa:
                 </label>
-                {{ form.University_gpa }}
+                {{ form.universityGpa }}
             </div>
             <div class="form-group">
-                <label for="id_Minimum_Salary_Expectation" data-bs-toggle="tooltip" 
+                <label for="id_salaryMinimum" data-bs-toggle="tooltip" 
                        title="Minimum_Salary_Expectation">
                        Minimum_Salary_Expectation:
                 </label>
-                {{ form.Minimum_Salary_Expectation }}
+                {{ form.salaryMinimum }}
             </div>
             <div class="form-group">
                 <label for="id_language_1" data-bs-toggle="tooltip" 
@@ -417,81 +424,82 @@
                 {{ form.language_3 }}
             </div>
             <div class="form-group">
-                <label for="id_Notice_Period" data-bs-toggle="tooltip" 
+                <label for="id_noticePeriod" data-bs-toggle="tooltip" 
                        title="Notice_Period">
                        Notice_Period:
                 </label>
-                {{ form.Notice_Period }}
+                {{ form.noticePeriod }}
             </div>
+            
             <div class="form-group">
                 <label for="id_Years_of_Experienc" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_1">
                        Years_of_Experience_1:
                 </label>
-                {{ form.Years_of_Experience_1 }}
+                {{ form.experience_Experience1 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experienc" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience2" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_2">
                        Years_of_Experience_2:
                 </label>
-                {{ form.Years_of_Experience_2 }}
+                {{ form.experience_Experience2 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experience_3" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience3" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_3">
                        Years_of_Experience_3:
                 </label>
-                {{ form.Years_of_Experience_3 }}
+                {{ form.experience_Experience3 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experienc_4" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience4" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_4">
                        Years_of_Experience_4:
                 </label>
-                {{ form.Years_of_Experience_4 }}
+                {{ form.experience_Experience4 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experienc_5" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience5" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_5">
                        Years_of_Experience_5:
                 </label>
-                {{ form.Years_of_Experience_5 }}
+                {{ form.experience_Experience5 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experienc_6" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience6" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_6">
                        Years_of_Experience_6:
                 </label>
-                {{ form.Years_of_Experience_6 }}
+                {{ form.experience_Experience6 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experienc_7" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience7" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_7">
                        Years_of_Experience_7:
                 </label>
-                {{ form.Years_of_Experience_7 }}
+                {{ form.experience_Experience7 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experienc_8" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience8" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_8">
                        Years_of_Experience_8:
                 </label>
-                {{ form.Years_of_Experience_8 }}
+                {{ form.experience_Experience8 }}
             </div>
             <div class="form-group">
                 <label for="id_Years_of_Experienc_9" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_9">
                        Years_of_Experience_9:
                 </label>
-                {{ form.Years_of_Experience_9 }}
+                {{ form.experience_Experience9 }}
             </div>
             <div class="form-group">
-                <label for="id_Years_of_Experienc_10" data-bs-toggle="tooltip" 
+                <label for="id_experience_Experience10" data-bs-toggle="tooltip" 
                        title="Years_of_Experience_10">
                        Years_of_Experience_10:
                 </label>
-                {{ form.Years_of_Experience_10 }}
+                {{ form.experience_Experience10 }}
             </div>
 
             
@@ -502,88 +510,88 @@
         <div class="mb-4">
             <h2>12.Personal Information</h2>
             <div class="form-group">
-                <label for="id_pronouns" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_Pronouns" data-bs-toggle="tooltip" 
                         title="pronouns">
                         pronouns:
                 </label>
-                {{ form.pronouns }}
+                {{ form.personalInfo_Pronouns }}
             </div>
             <div class="form-group">
-                <label for="id_first_Name" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_FirstName" data-bs-toggle="tooltip" 
                         title="first_Name">
                         first_Name:
                 </label>
-                {{ form.first_Name }}
+                {{ form.personalInfo_FirstName }}
             </div>
             <div class="form-group">
-                <label for="id_last_Name" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_lastName" data-bs-toggle="tooltip" 
                         title="last_Name">
                         last_Name:
                 </label>
-                {{ form.last_Name }}
+                {{ form.personalInfo_lastName }}
             </div>
             <div class="form-group">
-                <label for="id_phone_country_code" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_PhoneCountryCode" data-bs-toggle="tooltip" 
                         title="phone_country_code">
-                        phone_country_code:
+                        personalInfo_PhoneCountryCode:
                 </label>
-                {{ form.phone_country_code }}
+                {{ form.personalInfo_PhoneCountryCode }}
             </div>
             <div class="form-group">
-                <label for="id_phone_number" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_MobilePhoneNumber" data-bs-toggle="tooltip" 
                         title="phone_number">
-                        phone_number:
+                        personalInfo_MobilePhoneNumber:
                 </label>
-                {{ form.phone_number }}
+                {{ form.personalInfo_MobilePhoneNumber }}
             </div>
             <div class="form-group">
-                <label for="id_street_address" data-bs-toggle="tooltip" 
-                        title="street_address">
+                <label for="id_personalInfo_Streetaddress" data-bs-toggle="tooltip" 
+                        title="personalInfo_Streetaddress">
                         street_address:
                 </label>
-                {{ form.street_address }}
+                {{ form.personalInfo_Streetaddress }}
             </div>
             <div class="form-group">
-                <label for="id_city" data-bs-toggle="tooltip" 
-                        title="city">
+                <label for="id_personalInfo_City" data-bs-toggle="tooltip" 
+                        title="personalInfo_City">
                         city:
                 </label>
-                {{ form.city }}
+                {{ form.personalInfo_City }}
             </div>
             <div class="form-group">
-                <label for="id_state" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_State" data-bs-toggle="tooltip" 
                         title="state">
                         state:
                 </label>
-                {{ form.state }}
+                {{ form.personalInfo_State }}
             </div>
             <div class="form-group">
-                <label for="id_zip_code" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_Zip" data-bs-toggle="tooltip" 
                         title="zip_code">
                         zip_code:
                 </label>
-                {{ form.zip_code }}
+                {{ form.personalInfo_Zip }}
             </div>
             <div class="form-group">
-                <label for="id_Linkedin_Profile" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_Linkedin" data-bs-toggle="tooltip" 
                         title="Linkedin_Profile">
                         Linkedin_Profile:
                 </label>
-                {{ form.Linkedin_Profile }}
+                {{ form.personalInfo_Linkedin }}
             </div>
             <div class="form-group">
-                <label for="id_website" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_Website" data-bs-toggle="tooltip" 
                         title="website">
                         website:
                 </label>
-                {{ form.website }}
+                {{ form.personalInfo_Website }}
             </div>
             <div class="form-group">
-                <label for="id_message_to_hire" data-bs-toggle="tooltip" 
+                <label for="id_personalInfo_MessageToManager" data-bs-toggle="tooltip" 
                         title="message_to_hire">
                         message_to_hire:
                 </label>
-                {{ form.message_to_hire }}
+                {{ form.personalInfo_MessageToManager }}
             </div>
         </div>
 
@@ -591,43 +599,43 @@
         <div class="mb-4">
             <h2>13. provide the following information (for US-based jobs)</h2>
             <div class="form-group">
-                <label for="id_pronouns_us" data-bs-toggle="tooltip" 
+                <label for="id_eeo_gender" data-bs-toggle="tooltip" 
                        title=" pronouns_us">
                        pronouns_us:
                 </label>
-                {{ form.pronouns_us }}
+                {{ form.eeo_gender }}
             </div>
             <div class="form-group">
-                <label for="id_race" data-bs-toggle="tooltip" 
+                <label for="id_eeo_race" data-bs-toggle="tooltip" 
                        title="race">
                        race:
                 </label>
-                {{ form.race }}
+                {{ form.eeo_race }}
             </div><div class="form-group">
-                <label for="id_veteran_status" data-bs-toggle="tooltip" 
+                <label for="id_eeo_veteran" data-bs-toggle="tooltip" 
                        title=" veteran_status">
                        veteran_status:
                 </label>
-                {{ form.veteran_status }}
+                {{ form.eeo_veteran }}
             </div><div class="form-group">
-                <label for="id_disability_status" data-bs-toggle="tooltip" 
+                <label for="id_eeo_disability" data-bs-toggle="tooltip" 
                        title="disability_status">
-                       disability_status:
+                       eeo_disability:
                 </label>
-                {{ form.disability_status }}
+                {{ form.eeo_disability }}
             </div><div class="form-group">
-                <label for="id_citizenship" data-bs-toggle="tooltip" 
+                <label for="id_eeo_citizenship" data-bs-toggle="tooltip" 
                        title="citizenship">
                        citizenship:
                 </label>
-                {{ form.citizenship }}
+                {{ form.eeo_citizenship }}
             </div>
             <div class="form-group">
-                <label for="id_security_clearance_us" data-bs-toggle="tooltip" 
+                <label for="id_eeo_clearance" data-bs-toggle="tooltip" 
                        title="security_clearance_us">
                        security_clearance_us:
                 </label>
-                {{ form.security_clearance_us }}
+                {{ form.eeo_clearance }}
             </div>
         </div>
         
