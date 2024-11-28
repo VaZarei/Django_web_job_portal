@@ -16,11 +16,23 @@ def decrypt(text):
     return cipher.decrypt(text.encode()).decode()
 
 class JobApplication(models.Model):
-
-    def __str__(self):
-        return self.first_Name + ' '  + self.last_Name
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     
+    def __str__(self):
+        return f"Username: {self.user.username}"
+    
+   
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    #username = User.auth_user.username
+
+    
+
+    usernamep = models.CharField(max_length=30)
+    def save(self, *args, **kwargs):
+        if self.usernamep:
+            self.usernamep = 'prefix_'
+        super().save(*args, **kwargs)
+
     # 1.LinkedIn Credentials
     linkedinEmail = models.EmailField()
     linkedinPassword = models.TextField()
