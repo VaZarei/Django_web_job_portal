@@ -1,6 +1,6 @@
 import yaml
 from validate_email import validate_email
-
+import json
 
 
 
@@ -114,10 +114,7 @@ def validate_yaml():
 
 para = validate_yaml()
 
-for key in para.keys() :
-    print(key)
-    print(para[key])
-    print("*"*10)
 
-
+json_formatet_para = json.dumps(para, indent=4)
+print(json_formatet_para)
 

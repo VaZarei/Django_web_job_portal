@@ -108,7 +108,7 @@ class JobApplication(models.Model):
     checkboxes_securityClearance = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
     
     # checkboxes_completed_Degree is a list
-    checkboxes_completed_Degree  = models.CharField(max_length=40, choices=[('High School Diploma','High School Diploma'), ("Bachelor's Degree","Bachelor's Degree"), ("Master's Degree","Master's Degree"), ("Phd's Degree","Phd's Degree")], default="Bachelor's Degree") # IS a list, need to define
+    degreeCompleted  = models.CharField(max_length=40, choices=[('High School Diploma','High School Diploma'), ("Bachelor's Degree","Bachelor's Degree"), ("Master's Degree","Master's Degree"), ("Phd's Degree","Phd's Degree")], default="Bachelor's Degree") # IS a list, need to define
     checkboxes_backgroundCheck = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
 
 

@@ -48,8 +48,7 @@ for key in dictobj.keys():
         continue
         
     splitted_word = key.split('_')
-    print(splitted_word)
-    print("**********************")
+    
 
     if len(splitted_word)==1 :
         newdict[splitted_word[0]] = dictobj[key]
@@ -74,6 +73,23 @@ for key in dictobj.keys():
         languages[dictobj[key]] = "'Native or bilingual'"   ### language to languages and delete the null
 
     elif splitted_word[0] == "personalInfo" :
+
+        if "First".lower() in splitted_word[1].lower() :
+            splitted_word[1] = "First Name"
+
+        if "Last".lower() in splitted_word[1].lower() :
+            splitted_word[1] = "Last Name"
+        
+        if "Country".lower() in splitted_word[1].lower() :
+            splitted_word[1] = "Phone Country Code"
+        
+        if "Mobile".lower() in splitted_word[1].lower() :
+            splitted_word[1] = "Mobile Phone Number"
+        
+        if "Street".lower() in splitted_word[1].lower() :
+            splitted_word[1] = "Street address"
+
+    
         personalInfo[splitted_word[1]] = dictobj[key]
 
     elif splitted_word[0] == "eeo" :
