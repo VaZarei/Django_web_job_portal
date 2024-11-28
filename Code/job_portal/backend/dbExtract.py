@@ -1,7 +1,7 @@
 import os
 import django
 import json
-
+############################################## python -m backend.dbExtract.py #######################################
 # Set the Django project path
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'job_portal.settings')
 django.setup()
@@ -10,40 +10,40 @@ django.setup()
 from job_application.models import JobApplication
 
 
-obj = JobApplication.objects.get(id=1)
+obj = JobApplication.objects.get(id=2)
 print(type(obj.__dict__))
 dictobj = obj.__dict__
 
-# print(dictobj.keys())
-# print(dictobj.values())
+def cleaningElement(str):
+    """ a function to convert yes or no to boolean"""
 
-# for key in dictobj.keys():
-#     print(key), print(dictobj[key])
-#     print("*"*20)
+    if str == "Yes":
+            str=bool(True)
+            return str  
+    elif str == "No":
+            str=bool(False)
+            return str
+    else:
+        return str
+    
 
 newdict = {}
 experienceLevel = {}
 jobTypes = {}
 positions = []
 locations = []
+uploads = {}
 checkboxes= {}
 languages = {}
+experience = []
 personalInfo = {}
 eeo = {}
 
-"""
-for key in dictobj.keys():
-    splitted_word = key.split('_')
-    if len(splitted_word)<2 :
-        
-        newdict[splitted_word[0]] = dictobj[key]
-"""    
 
 
 blockwords = ["_state", "user_id" ]
 for key in dictobj.keys():
-    #print("key:", key, "___    value: ", dictobj[key])
-
+    
     if blockwords[0] == key.lower() or blockwords[1] == key.lower():
         continue
         
@@ -51,27 +51,61 @@ for key in dictobj.keys():
     
 
     if len(splitted_word)==1 :
-        newdict[splitted_word[0]] = dictobj[key]
+        if "date".lower() in splitted_word[0].lower():
+            newdict[splitted_word[0]] = {dictobj[key]: bool(True)}
+            continue
 
-    
+        newdict[splitted_word[0]] = cleaningElement(dictobj[key])
+
+#---------------------------------------------------------------------------- experienceLevel
     elif splitted_word[0] == "experienceLevel" :
-        experienceLevel[splitted_word[1]] = dictobj[key]
+        if "midsenior".lower() in splitted_word[1].lower():
+            splitted_word[1] = "mid-senior level"
 
+
+        experienceLevel[splitted_word[1]] = cleaningElement(dictobj[key])
+#---------------------------------------------------------------------------- jobTypes
     elif splitted_word[0] == "jobTypes" :
-        jobTypes[splitted_word[1]] = dictobj[key]
+        if "fulltime".lower() in splitted_word[1].lower() :
+            splitted_word[1] = "full-time"
+        
+        if "parttime".lower() in splitted_word[1].lower() :
+            splitted_word[1] = "part-time"
 
-    elif splitted_word[1] == "position" :         ###### position in models change to positions pls
-        positions.append(dictobj[key] )
+        jobTypes[splitted_word[1]] = cleaningElement(dictobj[key])
+#---------------------------------------------------------------------------- Positions
+    elif splitted_word[1] == "positions" : 
+        if dictobj[key] is not None:        
+           positions.append(dictobj[key] )
+#---------------------------------------------------------------------------- locations
+    elif splitted_word[1] == "locations" :        
+        if dictobj[key] is not None:
+           locations.append(cleaningElement(dictobj[key]))
+        
+#---------------------------------------------------------------------------- uploads
+    elif splitted_word[0] == "uploads" :        
+        uploads[splitted_word[1]] = dictobj[key]
 
-    elif splitted_word[1] == "location" :         ###### location in models change to locations pls
-        locations.append(dictobj[key] )
 
+
+#---------------------------------------------------------------------------- checkboxes
     elif splitted_word[0] == "checkboxes" :
-        checkboxes[splitted_word[1]] = dictobj[key]
+        if "degreeCompleted".lower() in splitted_word[1].lower() :
+            checkboxes[splitted_word[1]] = [dictobj[key]]
+            continue
+        checkboxes[splitted_word[1]] = cleaningElement(dictobj[key])
 
-    elif splitted_word[0] == "language" :
-        languages[dictobj[key]] = "'Native or bilingual'"   ### language to languages and delete the null
+#---------------------------------------------------------------------------- language
+    elif splitted_word[0] == "languages" :
+        languages[dictobj[key]] = "Native or bilingual"   
 
+#---------------------------------------------------------------------------- experience
+    elif splitted_word[0] == "experience" :
+        if dictobj[key] is not None:
+            experience.append(str(dictobj[key]))
+
+
+#---------------------------------------------------------------------------- personalInfo 
     elif splitted_word[0] == "personalInfo" :
 
         if "First".lower() in splitted_word[1].lower() :
@@ -91,9 +125,9 @@ for key in dictobj.keys():
 
     
         personalInfo[splitted_word[1]] = dictobj[key]
-
+#---------------------------------------------------------------------------- eeo
     elif splitted_word[0] == "eeo" :
-        eeo[splitted_word[1]] = dictobj[key]
+        eeo[splitted_word[1]] = cleaningElement(dictobj[key])
     
     
         
@@ -101,10 +135,14 @@ newdict["experienceLevel"] = experienceLevel
 newdict["jobTypes"] = jobTypes
 newdict["positions"] = positions
 newdict["locations"] = locations
+newdict["uploads"] = uploads
 newdict["checkboxes"] = checkboxes
 newdict["languages"] = languages
+newdict["experience"] = experience
 newdict["personalInfo"] = personalInfo
 newdict["eeo"] = eeo
+
+
 
 
 

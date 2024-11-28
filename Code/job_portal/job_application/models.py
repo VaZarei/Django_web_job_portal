@@ -34,91 +34,95 @@ class JobApplication(models.Model):
         super().save(*args, **kwargs)
 
     # 1.LinkedIn Credentials
-    linkedinEmail = models.EmailField()
-    linkedinPassword = models.TextField()
+    email = models.EmailField()
+    password = models.CharField(max_length=300)
 
-    disableAntiLock = False
-    
+    Choices = [
+        ('Yes', 'Yes'),
+        ('No', 'No'),
+    ]
+    disableAntiLock = models.CharField(max_length=10, choices=Choices, default='Yes')
     
     # 2.Job Preferences
-    remote = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    lessthanTenApplicants = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default='No')
+    remote = models.CharField(max_length=10, choices=Choices, default='Yes')
+    lessthanTenApplicants = models.CharField(max_length=10, choices=Choices, default='No')
+    
     
     # 3.Experience Level 
-    experienceLevel_internship = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experienceLevel_entry = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experienceLevel_associate = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experienceLevel_midsenior = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experienceLevel_director = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    experienceLevel_executive = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    experienceLevel_internship = models.CharField(max_length=10, choices=Choices, default="Yes")
+    experienceLevel_entry = models.CharField(max_length=10, choices=Choices, default="Yes")
+    experienceLevel_associate = models.CharField(max_length=10, choices=Choices, default="Yes")
+    experienceLevel_midsenior = models.CharField(max_length=10, choices=Choices, default="Yes")
+    experienceLevel_director = models.CharField(max_length=10, choices=Choices, default="Yes")
+    experienceLevel_executive = models.CharField(max_length=10, choices=Choices, default="Yes")
 
     
     # 4.Job Type
-    jobTypes_fulltime = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobTypes_contract = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobTypes_parttime = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobTypes_temporary = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobTypes_internship = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobTypes_other = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
-    jobTypes_volunteer = models.CharField(max_length=10, choices=[('Yes', 'Yes'), ('No', 'No')], default="Yes")
+    jobTypes_fulltime = models.CharField(max_length=10, choices=Choices, default="Yes")
+    jobTypes_contract = models.CharField(max_length=10, choices=Choices, default="Yes")
+    jobTypes_parttime = models.CharField(max_length=10, choices=Choices, default="Yes")
+    jobTypes_temporary = models.CharField(max_length=10, choices=Choices, default="Yes")
+    jobTypes_internship = models.CharField(max_length=10, choices=Choices, default="Yes")
+    jobTypes_other = models.CharField(max_length=10, choices=Choices, default="Yes")
+    jobTypes_volunteer = models.CharField(max_length=10, choices=Choices, default="Yes")
 
 
     # 5.Job application Posting Date 
-    date = models.CharField(max_length=15, choices=[('All_Time', 'All_Time'), ('month', 'month'), ('week', 'week'), ('24_hours', '24_hours')], default="All_Time")
+    date = models.CharField(max_length=15, choices=[('all time', 'all time'), ('month', 'month'), ('week', 'week'), ('24 hours', '24 hours')], default="all time")
 
     # 6.Job Positions is a list, need to write seprate code
-    job_position_1 = models.CharField(max_length=30, null=False, blank= False, default="python developer")
-    job_position_2 = models.CharField(max_length=30, null=False, blank= False, default="digital marketer")
-    job_position_3 = models.CharField(max_length=30, null=True, blank= True)
-    job_position_4 = models.CharField(max_length=30, null=True, blank= True)
-    job_position_5 = models.CharField(max_length=30, null=True, blank= True)
-    job_position_6 = models.CharField(max_length=30, null=True, blank= True)
+    job_positions_1 = models.CharField(max_length=30, null=False, blank= False, default="python developer")
+    job_positions_2 = models.CharField(max_length=30, null=False, blank= False, default="digital marketer")
+    job_positions_3 = models.CharField(max_length=30, null=True, blank= True)
+    job_positions_4 = models.CharField(max_length=30, null=True, blank= True)
+    job_positions_5 = models.CharField(max_length=30, null=True, blank= True)
+    job_positions_6 = models.CharField(max_length=30, null=True, blank= True)
 
     # 7.Job Locations is a list, need to write seprate code
-    job_location_1 = models.CharField(max_length=30, null=False, blank=False, default= "England")
-    job_location_2 = models.CharField(max_length=30, null=True, blank=True)
-    job_location_3 = models.CharField(max_length=30, null=True, blank=True)
-    job_location_4 = models.CharField(max_length=30, null=True, blank=True)
-    job_location_5 = models.CharField(max_length=30, null=True, blank=True)
-    job_location_6 = models.CharField(max_length=30, null=True, blank=True)
+    job_locations_1 = models.CharField(max_length=30, null=False, blank=False, default= "England")
+    job_locations_2 = models.CharField(max_length=30, null=True, blank=True)
+    job_locations_3 = models.CharField(max_length=30, null=True, blank=True)
+    job_locations_4 = models.CharField(max_length=30, null=True, blank=True)
+    job_locations_5 = models.CharField(max_length=30, null=True, blank=True)
+    job_locations_6 = models.CharField(max_length=30, null=True, blank=True)
 
     # 8.Additional Information
-    residentStatus = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
+    residentStatus = models.CharField(max_length=10, choices=Choices, default="Yes")
     distance = models.CharField(max_length=10, choices=[('0','0'),('5','5'),('10','10'),('25','25'),('50','50'),('100','100'),], default='25')
-    # outputFileDirectory need to define
-    # companyBlacklist
-    # titleBlacklist
-    # posterBlacklist
-
+    
     # 9.provide the following additional information
     
     uploads_resume = models.FileField(upload_to='resumes/', null=True, blank=True)
     uploads_coverLetter = models.FileField(upload_to='cover_letters/', null=True, blank=True)
+
+    outputFileDirectory = models.CharField(max_length=200, default="write user path/write user path")
+    companyBlacklist = models.CharField(max_length=20, null=True)
+    titleBlacklist = models.CharField(max_length=20, null=True)
+    posterBlacklist = models.CharField(max_length=20, null=True)
+
     
     # 10.answer the following questions
-    checkboxes_driversLicence = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
-    checkboxes_requireVisa = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
-    checkboxes_legallyAuthorized = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    checkboxes_certifiedProfessional = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    checkboxes_urgentFill = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    checkboxes_commute = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    checkboxes_remote = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    checkboxes_drugTest = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    checkboxes_assessment = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    checkboxes_securityClearance = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')])
-    
-    # checkboxes_completed_Degree is a list
-    degreeCompleted  = models.CharField(max_length=40, choices=[('High School Diploma','High School Diploma'), ("Bachelor's Degree","Bachelor's Degree"), ("Master's Degree","Master's Degree"), ("Phd's Degree","Phd's Degree")], default="Bachelor's Degree") # IS a list, need to define
-    checkboxes_backgroundCheck = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
+    checkboxes_driversLicence = models.CharField(max_length=10, choices=Choices)
+    checkboxes_requireVisa = models.CharField(max_length=10, choices=Choices)
+    checkboxes_legallyAuthorized = models.CharField(max_length=10, choices=Choices, default='yes')
+    checkboxes_certifiedProfessional = models.CharField(max_length=10, choices=Choices, default='yes')
+    checkboxes_urgentFill = models.CharField(max_length=10, choices=Choices, default='yes')
+    checkboxes_commute = models.CharField(max_length=10, choices=Choices, default='yes')
+    checkboxes_remote = models.CharField(max_length=10, choices=Choices, default='yes')
+    checkboxes_drugTest = models.CharField(max_length=10, choices=Choices, default='yes')
+    checkboxes_assessment = models.CharField(max_length=10, choices=Choices, default='yes')
+    checkboxes_securityClearance = models.CharField(max_length=10, choices=Choices)
+    checkboxes_degreeCompleted  = models.CharField(max_length=40, choices=[('High School Diploma','High School Diploma'), ("Bachelor's Degree","Bachelor's Degree"), ("Master's Degree","Master's Degree"), ("Phd's Degree","Phd's Degree")], default="Bachelor's Degree") # IS a list, need to define
+    checkboxes_backgroundCheck = models.CharField(max_length=10, choices=Choices, default='yes')
 
 
     # 11.provide the following information
     universityGpa = models.CharField(max_length=30, null=True, blank=True, default='A')
     salaryMinimum = models.CharField(max_length=20, null=False, blank=False, default='32000')
 
-    language_1 = models.CharField(max_length=20, null=False, blank=False, default='English')
-    language_2 = models.CharField(max_length=20, null=True, blank=True )
-    language_3 = models.CharField(max_length=20, null=True, blank=True )
+    languages_1 = models.CharField(max_length=20, null=False, blank=False, default='English')
+    languages_2 = models.CharField(max_length=20, null=True, blank=True )
+    languages_3 = models.CharField(max_length=20, null=True, blank=True )
 
     noticePeriod = models.CharField(max_length=5, null=False, blank=False, default='3') # per Week
     experience_Experience1 = models.CharField(max_length=35, null=False, blank=False, default='Software Developer : 3')
@@ -149,11 +153,11 @@ class JobApplication(models.Model):
 
     #13. provide the following information (for US-based jobs)
     eeo_gender = models.CharField(max_length=30, choices=[('Male','Male'), ('Female','Female'), ('Non-binary.','Non-binary'), ('Other','Other')], null=True, default=None)
-    eeo_race = models.CharField(max_length=20, null=False, blank=False, default='none')
-    eeo_veteran = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
-    eeo_disability = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="no")
-    eeo_citizenship = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default='yes')
-    eeo_clearance = models.CharField(max_length=10, choices=[('yes','yes'), ('no','no')], default="Yes")
+    eeo_race = models.CharField(max_length=20, null=True, blank=False, default="null")
+    eeo_veteran = models.CharField(max_length=10, choices=Choices, default="Yes")
+    eeo_disability = models.CharField(max_length=10, choices=Choices, default="no")
+    eeo_citizenship = models.CharField(max_length=10, choices=Choices, default='yes')
+    eeo_clearance = models.CharField(max_length=10, choices=Choices, default="Yes")
 
 
 
