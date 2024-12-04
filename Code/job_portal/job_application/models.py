@@ -22,16 +22,29 @@ class JobApplication(models.Model):
     
    
     
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    #username = User.auth_user.username
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null= False)
 
+    # usernamep = models.CharField(max_length=130, null=False, blank=False)
+  
+    """
+  
+    usernamep = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favourite_job_applications')
+    def finduserName():
+        #obj = User.objects.get(usernamr= User.username)
+        return str(User.username)
+        
+    usernameo = models.CharField(max_length=130, default=finduserName())
+   """
+   
+   
+   
+    # def save(self, *args, **kwargs):
+    #     if not self.id:  # Check if it's a new instance
+    #         obj = User.objects.get(id=1)  # Assuming you only want username for User with ID 1
+    #         self.usernamep = str(obj.username)
+    #     super().save(*args, **kwargs)
+                               
     
-
-    usernamep = models.CharField(max_length=30)
-    def save(self, *args, **kwargs):
-        if self.usernamep:
-            self.usernamep = 'prefix_'
-        super().save(*args, **kwargs)
 
     # 1.LinkedIn Credentials
     email = models.EmailField()
@@ -160,7 +173,6 @@ class JobApplication(models.Model):
     eeo_clearance = models.CharField(max_length=10, choices=Choices, default="Yes")
 
 
-
     
 
 
@@ -170,10 +182,7 @@ class JobApplication(models.Model):
 
 
     
-    def save(self, *args, **kwargs):
-        if not self.pk:  # Encrypt LinkedIn password on first save
-            self.linkedinPassword = encrypt(self.linkedinPassword)
-        super().save(*args, **kwargs)
+
     
     def get_linkedin_password(self):
-        return decrypt(self.linkedinPassword)
+        return decrypt(self.password)

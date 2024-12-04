@@ -4,18 +4,6 @@ from .models import JobApplication
 from confluent_kafka import Producer
 import json
 from django.contrib.auth.decorators import login_required
-
-
-### Job Application Form View
-
-
-# Kafka producer configuration
-from django.shortcuts import render, redirect
-from .forms import JobApplicationForm
-from .models import JobApplication
-from confluent_kafka import Producer
-import json
-from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
 # Kafka producer configuration
@@ -32,10 +20,10 @@ def delivery_report(err, msg):
         print(f"Message delivered to {msg.topic()} [{msg.partition()}]")
 
 @login_required
+@login_required
 def job_application_view(request):
     """Handles job application form submission and sends data to Kafka."""
     try:
-        # Check if the user already has a job application, otherwise create one
         job_application, created = JobApplication.objects.get_or_create(user=request.user)
     except ObjectDoesNotExist:
         job_application = JobApplication.objects.create(user=request.user)
@@ -44,29 +32,14 @@ def job_application_view(request):
         form = JobApplicationForm(request.POST, request.FILES, instance=job_application)
         if form.is_valid():
             form.save()
-            data = form.cleaned_data
-            
-            # Serialize the form data to JSON format
-            message = json.dumps(data)
-            
-            # Send data to Kafka topic
-            try:
-                producer.produce(
-                    'job_application_updates',
-                    value=message.encode('utf-8'),
-                    callback=delivery_report
-                )
-                producer.flush()
-            except Exception as e:
-                print(f"Error producing message to Kafka: {e}")
-
-            return redirect('job_application:profile')
+            print("Form saved successfully!")  # Debug statement
+            return redirect('home')  # Ensure this is the correct URL name
+        else:
+            print("Form validation failed.")  # Debug statement
     else:
         form = JobApplicationForm(instance=job_application)
     
     return render(request, 'job_application/form.html', {'form': form})
-
-
 
 ### Profile View
 
@@ -79,7 +52,7 @@ def profile_view(request):
         job_application = None
     return render(request, 'job_application/profile.html', {'job_application': job_application})
 
-###  Edit Job Application View
+### Edit Job Application View
 
 @login_required
 def edit_job_application(request):
