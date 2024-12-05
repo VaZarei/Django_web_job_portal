@@ -2,10 +2,10 @@ import yaml
 from validate_email import validate_email
 import json
 
-
+############################################## python -m data_processing.services.inspection_validate_data.py  #######################################
 
 def validate_yaml():
-    with open("F:/jobBot/Code/job_portal/backend/config.yaml", 'r') as stream:
+    with open("F:\jobBot\Code\job_portal\data_processing\services\config.yaml", 'r') as stream:
         
         try:
             parameters = yaml.safe_load(stream)
@@ -40,6 +40,7 @@ def validate_yaml():
             raise Exception(mandatory_param + ' is not defined in the config.yaml file!')
 
     assert validate_email(parameters['email'])
+    print("validate_email is Accepted" * 20)
     assert len(str(parameters['password'])) > 0
     assert isinstance(parameters['disableAntiLock'], bool)
     assert isinstance(parameters['remote'], bool)

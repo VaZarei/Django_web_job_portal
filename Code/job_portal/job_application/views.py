@@ -19,7 +19,7 @@ def delivery_report(err, msg):
     else:
         print(f"Message delivered to {msg.topic()} [{msg.partition()}]")
 
-@login_required
+
 @login_required
 def job_application_view(request):
     """Handles job application form submission and sends data to Kafka."""

@@ -101,7 +101,18 @@ class JobApplication(models.Model):
 
     # 8.Additional Information
     residentStatus = models.CharField(max_length=10, choices=Choices, default="Yes")
-    distance = models.CharField(max_length=10, choices=[('0','0'),('5','5'),('10','10'),('25','25'),('50','50'),('100','100'),], default='25')
+    distance = models.IntegerField(
+        choices=[
+            (0, 0),
+            (5, 5),
+            (10, 10),
+            (25, 25),
+            (50, 50),
+            (100, 100),
+        ],
+        default=25
+    )
+    # distance = models.IntegerChoices(choices=[(0,0),(5,5),(10,10),(25,25),(50,50),(100,100),], default=25)
     
     # 9.provide the following additional information
     
@@ -130,7 +141,7 @@ class JobApplication(models.Model):
 
 
     # 11.provide the following information
-    universityGpa = models.CharField(max_length=30, null=True, blank=True, default='A')
+    universityGpa = models.FloatField(null=True, blank=True)
     salaryMinimum = models.CharField(max_length=20, null=False, blank=False, default='32000')
 
     languages_1 = models.CharField(max_length=20, null=False, blank=False, default='English')
@@ -138,6 +149,13 @@ class JobApplication(models.Model):
     languages_3 = models.CharField(max_length=20, null=True, blank=True )
 
     noticePeriod = models.CharField(max_length=5, null=False, blank=False, default='3') # per Week
+
+
+   
+
+
+
+
     experience_Experience1 = models.CharField(max_length=35, null=False, blank=False, default='Software Developer : 3')
     experience_Experience2 = models.CharField(max_length=35, null=True, blank=True, default='python : 2')
     experience_Experience3 = models.CharField(max_length=35, null=True, blank=True, default='sql : 8')
@@ -148,6 +166,7 @@ class JobApplication(models.Model):
     experience_Experience8 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
     experience_Experience9 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
     experience_Experience10 = models.CharField(max_length=35, null=True, blank=True, default='aws : 3')
+    experience_default = models.CharField(max_length=20,default='default : 1')
 
 
     # 12.Personal Information
