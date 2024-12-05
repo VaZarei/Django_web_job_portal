@@ -24,7 +24,8 @@ class JobApplication(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE, null= False)
 
-    # usernamep = models.CharField(max_length=130, null=False, blank=False)
+    username = models.CharField(max_length=150,null=True, blank=True)
+    useremail = models.CharField(max_length=150,null=True, blank=True)
   
     """
   
@@ -141,7 +142,7 @@ class JobApplication(models.Model):
 
 
     # 11.provide the following information
-    universityGpa = models.FloatField(null=True, blank=True)
+    universityGpa = models.FloatField(null=True, blank=True, default=100)
     salaryMinimum = models.CharField(max_length=20, null=False, blank=False, default='32000')
 
     languages_1 = models.CharField(max_length=20, null=False, blank=False, default='English')

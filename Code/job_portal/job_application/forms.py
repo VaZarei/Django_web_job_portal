@@ -11,7 +11,7 @@ class JobApplicationForm(forms.ModelForm):
     class Meta:
         model = JobApplication
         fields = '__all__' # []
-        exclude = ['experience_default']
+        exclude = ['experience_default','username','useremail']
         widgets = {
             'linkedin_password_encrypted': forms.PasswordInput(),
         }

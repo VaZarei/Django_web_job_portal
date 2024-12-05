@@ -16,9 +16,9 @@ django.setup()
 from job_application.models import JobApplication
 
 
-def dbExtract(model_name,id):
+def dbExtract(model_name,username):
     JobApplication = model_name
-    obj = JobApplication.objects.get(id=id)
+    obj = JobApplication.objects.get(username=username)
     print(type(obj.__dict__))
     dictobj = obj.__dict__
 
@@ -272,7 +272,7 @@ def validate_yaml(dict):
 
     return parameters
 
-para = validate_yaml(dbExtract(JobApplication,3))
+para = validate_yaml(dbExtract(JobApplication,'vahidz'))
 
 
 json_formatet_para = json.dumps(para, indent=4)
