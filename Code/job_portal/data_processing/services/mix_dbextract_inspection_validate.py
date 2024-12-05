@@ -264,7 +264,7 @@ def validate_extracted_dict(dict):
     return parameters
 
 para = validate_extracted_dict(dbExtract(JobApplication,'vahidz'))
-
+print("-"*130, type(para))
 
 json_formatet_para = json.dumps(para, indent=4)
 print(json_formatet_para)
@@ -275,6 +275,18 @@ print(json_formatet_para)
 
 import os
 import yaml
+import ast
+
+
+
+
+
+
+
+
+# dictionary = ast.literal_eval(json_formatet_para)
+# # print("+"*130, dictionary)
+
 
 # Your dictionary variable
 
@@ -289,8 +301,9 @@ os.makedirs(directory, exist_ok=True)
 # Define the full file path
 file_path = os.path.join(directory, file_name)
 
-# Save the dictionary as a YAML file
-with open(file_path, "w") as yaml_file:
-    yaml.dump(json_formatet_para, yaml_file, default_flow_style=False)
 
-print(f"File saved at: {file_path}")
+# Save the dictionary as a YAML file
+with open(file_path, "w") as file:
+    yaml.dump(para, file, sort_keys=False, default_flow_style=False, allow_unicode=True)
+
+# print(f"File saved at: {file_path}")
