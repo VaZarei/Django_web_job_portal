@@ -11,8 +11,8 @@ django.setup()
 from job_application.models import JobApplication
 
 def dbExtract(model_name,id):
-    JobApplication = model_name
-    obj = JobApplication.objects.get( username='vahidz')
+    
+    obj = model_name.objects.get( username='vahidz')
     print(type(obj.__dict__))
     dictobj = obj.__dict__
 

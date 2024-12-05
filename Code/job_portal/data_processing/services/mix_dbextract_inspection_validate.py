@@ -2,23 +2,23 @@ import yaml
 from validate_email import validate_email
 import json
 
-
+import yaml
 import os
 import django
-import json
+
+
 ############################################## python -m data_processing.services.mix_dbextract_inspection_validate.py  #######################################
-# Set the Django project path
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'job_portal.settings')
 django.setup()
 
-# Now you can import models
-# from job_application.models import JobApplication
+
 from job_application.models import JobApplication
 
 
 def dbExtract(model_name,username):
-    JobApplication = model_name
-    obj = JobApplication.objects.get(username=username)
+    
+    obj = model_name.objects.get(username=username)
     print(type(obj.__dict__))
     dictobj = obj.__dict__
 
@@ -153,18 +153,9 @@ def dbExtract(model_name,username):
     newdict["eeo"] = eeo
 
 
-
-
-
-
-
-
-    # json_formatted_string = json.dumps(newdict, indent=4)
-    # print(json_formatted_string)
-    # print(newdict.keys())
     return newdict
 
-def validate_yaml(dict):
+def validate_extracted_dict(dict):
     
         
     try:
@@ -272,9 +263,34 @@ def validate_yaml(dict):
 
     return parameters
 
-para = validate_yaml(dbExtract(JobApplication,'vahidz'))
+para = validate_extracted_dict(dbExtract(JobApplication,'vahidz'))
 
 
 json_formatet_para = json.dumps(para, indent=4)
 print(json_formatet_para)
 
+
+
+    #---------------------------------------------------------------------------- Save as a file
+
+import os
+import yaml
+
+# Your dictionary variable
+
+
+# Define the directory and file name
+directory = os.path.join("data_processing", "services", "yamlfiles")
+file_name = "data.yaml"
+
+# Ensure the directory exists
+os.makedirs(directory, exist_ok=True)
+
+# Define the full file path
+file_path = os.path.join(directory, file_name)
+
+# Save the dictionary as a YAML file
+with open(file_path, "w") as yaml_file:
+    yaml.dump(json_formatet_para, yaml_file, default_flow_style=False)
+
+print(f"File saved at: {file_path}")

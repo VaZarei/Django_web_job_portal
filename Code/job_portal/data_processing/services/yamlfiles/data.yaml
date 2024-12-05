@@ -1,0 +1,36 @@
+"{\n    \"id\": 5,\n    \"username\": \"vahidz\",\n    \"useremail\": \"eng@gmail.com\"\
+  ,\n    \"email\": \"ethan.foster@example.com\",\n    \"password\": \"asdASD123@#\"\
+  ,\n    \"disableAntiLock\": false,\n    \"remote\": true,\n    \"lessthanTenApplicants\"\
+  : false,\n    \"date\": {\n        \"all time\": true\n    },\n    \"residentStatus\"\
+  : true,\n    \"distance\": 25,\n    \"outputFileDirectory\": \"write user path/write\
+  \ user path\",\n    \"companyBlacklist\": \"omomomo\",\n    \"titleBlacklist\":\
+  \ \"ss\",\n    \"posterBlacklist\": \"sss\",\n    \"universityGpa\": 19.0,\n   \
+  \ \"salaryMinimum\": \"32000\",\n    \"noticePeriod\": \"3\",\n    \"experienceLevel\"\
+  : {\n        \"internship\": true,\n        \"entry\": true,\n        \"associate\"\
+  : true,\n        \"mid-senior level\": true,\n        \"director\": true,\n    \
+  \    \"executive\": true\n    },\n    \"jobTypes\": {\n        \"full-time\": true,\n\
+  \        \"contract\": true,\n        \"part-time\": true,\n        \"temporary\"\
+  : true,\n        \"internship\": true,\n        \"other\": false,\n        \"volunteer\"\
+  : true\n    },\n    \"positions\": [\n        \"python developer\",\n        \"\
+  digital marketer\"\n    ],\n    \"locations\": [\n        \"England\"\n    ],\n\
+  \    \"uploads\": {\n        \"resume\": \"\",\n        \"coverLetter\": \"\"\n\
+  \    },\n    \"checkboxes\": {\n        \"driversLicence\": true,\n        \"requireVisa\"\
+  : true,\n        \"legallyAuthorized\": true,\n        \"certifiedProfessional\"\
+  : true,\n        \"urgentFill\": true,\n        \"commute\": true,\n        \"remote\"\
+  : true,\n        \"drugTest\": true,\n        \"assessment\": true,\n        \"\
+  securityClearance\": true,\n        \"degreeCompleted\": [\n            \"Bachelor's\
+  \ Degree\"\n        ],\n        \"backgroundCheck\": true\n    },\n    \"languages\"\
+  : {\n        \"English\": \"Native or bilingual\",\n        \"null\": \"Native or\
+  \ bilingual\"\n    },\n    \"experience\": {\n        \"Software Developer\": 3,\n\
+  \        \"python\": 2,\n        \"sql\": 8,\n        \"aws\": 3,\n        \"default\"\
+  : 1\n    },\n    \"personalInfo\": {\n        \"Pronouns\": \"Ms.\",\n        \"\
+  First Name\": \"John\",\n        \"Last Name\": \"Doe\",\n        \"Phone Country\
+  \ Code\": \"+44\",\n        \"Mobile Phone Number\": \"+447012345678\",\n      \
+  \  \"Street address\": \"wimbley street\",\n        \"City\": \"London\",\n    \
+  \    \"State\": \"London\",\n        \"Zip\": \"0WB ACE\",\n        \"Linkedin\"\
+  : \"https://www.linkedin.com/in/john-doe/\",\n        \"Website\": \"https://www.johndoe.com/\"\
+  ,\n        \"MessageToManager\": \"Hi, I am interested to join your organization.\
+  \ Please have a look at my resume. Thank you.\"\n    },\n    \"eeo\": {\n      \
+  \  \"gender\": \"Male\",\n        \"race\": \"null\",\n        \"veteran\": true,\n\
+  \        \"disability\": true,\n        \"citizenship\": true,\n        \"clearance\"\
+  : true\n    }\n}"
